@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MD | IISER-TVM B23 Bandwidth Usage Report</title>
+
+    <script src="/js/preloader.js" defer></script>
+    <script src="/js/nav_menu.js" defer></script>
+    <script src="/js/load_icons.js" defer></script>
+
+    <link
+      rel="stylesheet"
+      href="/css/animations/loading-animations.css?v=1791012612594"
+      id="main-theme-sheet"
+    />
+
+    <link rel="preload" href="/assets/logo.svg" as="image" type="image/svg+xml" />
+    <link rel="preload" href="/fonts/Outfit/Outfit-VariableFont_wght.woff2" crossorigin="anonymous" as="font" type="font/woff2" />
+
+    <link rel="icon" href="/favicon.png" type="image/png" sizes="33x33" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any" />
+
+    <link rel="stylesheet" href="/css/style.min.css?v=1791012612594" id="main-theme-sheet" />
+    <link rel="stylesheet" href="/css/report.css?v=1784704806523" />
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
+
+    <!-- External dependencies from remote repo -->
+    <script defer src="https://cdn.jsdelivr.net/gh/maheshdurgam/InternetScrape@main/js/papaparse.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/gh/maheshdurgam/InternetScrape@main/js/chart.umd.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/gh/maheshdurgam/InternetScrape@main/js/d3.min.js"></script>
+
+    <!-- Data must be loaded before main; both must have defer -->
+    <script defer src="https://cdn.jsdelivr.net/gh/maheshdurgam/InternetScrape@main/js/data.js"></script>
+    <script defer src="/js/dependencies/report_generator.js"></script>
+  </head>
+  <body>
+
+    <div id="loading-screen">
+      <div class="loader-matrix-container">
+        <div class="matrix-dot"></div>
+        <div class="matrix-dot"></div>
+        <div class="matrix-dot matrix-hero"></div>
+        <div class="matrix-dot"></div>
+      </div>
+    </div>
+
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="/index.html" class="logo-link" aria-label="Mahesh Durgam Home">
+          <div class="logo-item" data-src="/assets/logo.svg"></div>
+        </a>
+
+        <button
+          class="menu-toggle"
+          id="menu-toggle"
+          aria-label="Toggle navigation"
+        >
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+
+        <ul class="nav-links" id="nav-links">
+          <li><a href="/gallery.html" class="nav-item">Gallery</a></li>
+          <li><a href="/projects.html" class="nav-item">Projects</a></li>
+          <li><a href="/blog.html" class="nav-item">Blog</a></li>
+          <li>
+            <a
+              href="https://github.com/maheshdurgam"
+              class="nav-item"
+              target="_blank"
+              >Github</a
+            >
+          </li>
+          <li><a href="/contact.html" class="nav-item">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+    
+    <div class="blog-content">
+      <div class="blog-header">
+        <h1 class="blog-heading">B23 Bandwidth Usage</h1>
+        <span class="blog-creation-time">August 30, 2026</span>
+      </div>
+
+      <div class="blog-body">
+        <div class="wrap report-container">
+          <p class="kicker">
+            Report generated for <b id="metaN">310</b> records for August-2026
+          </p>
+
+          <section id="summary">
+            <h2><span class="num">1 </span>Summary statistics (MB)</h2>
+            <div class="table-scroll">
+              <table class="stat-table">
+                <thead>
+                  <tr>
+                    <th>Metric</th>
+                    <th>N</th>
+                    <th>Mean (MB)</th>
+                    <th>Median (MB)</th>
+                    <th>Std. dev.</th>
+                    <th>Min (MB)</th>
+                    <th>Max (MB)</th>
+                    <th>Sum (MB)</th>
+                  </tr>
+                </thead>
+                <tbody id="statsTableBody"></tbody>
+              </table>
+            </div>
+            <ul class="notes">
+              <li>
+                Pearson correlation, upload vs. download:
+                <span id="corrInline">-</span>
+              </li>
+              <li>
+                Gini coefficient, total traffic: <span id="giniInline">-</span>
+              </li>
+              <li>
+                Accounts with zero recorded traffic: <span id="ghostInline">-</span>
+              </li>
+            </ul>
+          </section>
+
+          <section id="topusers">
+            <h2><span class="num">2 </span>Top consumers</h2>
+            <p class="lede">
+              The ten accounts responsible for the largest share of total traffic.
+            </p>
+            <div class="table-scroll">
+              <table class="rank-table">
+                <thead>
+                  <tr>
+                    <th class="rank-col">#</th>
+                    <th class="name-col">Name</th>
+                    <th>Username</th>
+                    <th>Upload (MB)</th>
+                    <th>Download (MB)</th>
+                    <th>Total traffic (MB)</th>
+                    <th>Share of total</th>
+                  </tr>
+                </thead>
+                <tbody id="topTableBody"></tbody>
+              </table>
+            </div>
+          </section>
+
+          <section id="figures">
+            <h2><span class="num">3 </span>Figures</h2>
+
+            <figure>
+              <div class="fig-grid three">
+                <div>
+                  <div class="panel-label">Upload (MB)</div>
+                  <div class="chart-box short">
+                    <canvas id="shareUploadChart"></canvas>
+                  </div>
+                </div>
+                <div>
+                  <div class="panel-label">Download (MB)</div>
+                  <div class="chart-box short">
+                    <canvas id="shareDownloadChart"></canvas>
+                  </div>
+                </div>
+                <div>
+                  <div class="panel-label">Total traffic (MB)</div>
+                  <div class="chart-box short">
+                    <canvas id="shareTotalChart"></canvas>
+                  </div>
+                </div>
+              </div>
+              <figcaption>
+                <b>Figure 1.</b> Top 5 accounts by each metric against the remainder ("Other"). Proportions computed from total recorded megabytes.
+              </figcaption>
+            </figure>
+
+            <figure>
+              <div class="fig-head">
+                <div class="fig-controls">
+                  Showing top
+                  <input
+                    type="range"
+                    id="topNRange"
+                    min="5"
+                    max="40"
+                    value="15"
+                  /><span id="topNLabel">15</span> of N
+                </div>
+              </div>
+              <div class="chart-box tall"><canvas id="barChart"></canvas></div>
+              <figcaption>
+                <b>Figure 2.</b> Accounts ranked by total traffic in MB, highest to lowest.
+              </figcaption>
+            </figure>
+
+            <figure>
+              <div class="fig-head">
+                <span class="stat-pill"
+                  >r = <b id="corrValue">-</b> &nbsp;·&nbsp; R² =
+                  <b id="r2Value">-</b></span
+                >
+              </div>
+              <div class="chart-box tall"><canvas id="scatterChart"></canvas></div>
+              <figcaption>
+                <b>Figure 3.</b> Upload against download per account (in MB). Marker area is
+                proportional to total traffic; dashed line is the
+                ordinary-least-squares fit.
+              </figcaption>
+            </figure>
+
+            <figure>
+              <div class="fig-head">
+                <div class="chip-group" id="histChips">
+                  <button class="chip active" data-metric="Upload">Upload</button>
+                  <button class="chip" data-metric="Download">Download</button>
+                  <button class="chip" data-metric="Total traffic">Total</button>
+                </div>
+              </div>
+              <div class="chart-box"><canvas id="histChart"></canvas></div>
+              <figcaption>
+                <b>Figure 4.</b> Distribution of
+                <span id="histCaptionMetric">upload</span> volume (MB) across accounts,
+                in 12 equal-width bins.
+              </figcaption>
+            </figure>
+
+            <figure class="tall-box-figure">
+              <div class="chart-box tall">
+                <svg
+                  id="boxplotSvg"
+                  viewBox="0 0 560 320"
+                  preserveAspectRatio="xMidYMid meet"
+                  style="width: 100%; height: 100%"
+                ></svg>
+              </div>
+              <figcaption>
+                <b>Figure 5.</b> Spread and outliers for each metric in MB. Boxes span the
+                interquartile range (25th-75th percentile); whiskers extend to the
+                most extreme value within 1.5×IQR of the box; points beyond that are
+                flagged as outliers.
+              </figcaption>
+            </figure>
+
+            <figure class="lorenz-figure">
+              <div class="lorenz-layout">
+                <svg
+                  id="lorenzSvg"
+                  viewBox="0 0 520 300"
+                  preserveAspectRatio="xMidYMid meet"
+                ></svg>
+                <div class="gini-readout">
+                  <div>
+                    <div class="gini-big" id="giniValue">-<span>/ 1.00</span></div>
+                  </div>
+                  <div class="gini-scale">
+                    <div class="gini-marker" id="giniMarker" style="left: 0%"></div>
+                  </div>
+                  <div class="gini-legend">
+                    <span>Even</span><span>Concentrated</span>
+                  </div>
+                  <p id="giniReadout"></p>
+                </div>
+              </div>
+              <figcaption>
+                <b>Figure 6.</b> Lorenz curve for total traffic - cumulative share
+                of traffic (y) held by the cumulative share of accounts (x), sorted
+                ascending. The diagonal marks perfectly equal usage; the further the
+                curve bows from it, the more concentrated usage is. Gini coefficient
+                is twice the area between the two.
+              </figcaption>
+            </figure>
+          </section>
+
+          <section id="dataset">
+            <h2><span class="num">4 </span>Full dataset</h2>
+            <div class="table-controls">
+              <label class="search-box">
+                <svg
+                  width="13"
+                  height="13"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <circle cx="11" cy="11" r="7" />
+                  <path d="m21 21-4.3-4.3" />
+                </svg>
+                <input
+                  type="text"
+                  id="searchInput"
+                  placeholder="Filter by name or username"
+                />
+              </label>
+              <button class="text-btn" id="downloadCsvBtn">
+                Export filtered CSV
+              </button>
+            </div>
+            <div class="table-scroll">
+              <table class="data-table">
+                <thead>
+                  <tr id="tableHeadRow"></tr>
+                </thead>
+                <tbody id="tableBody"></tbody>
+              </table>
+            </div>
+            <div class="table-footer">
+              <span class="count" id="rowCount">-</span>
+              <div class="pager">
+                <button id="prevPage">‹</button>
+                <span id="pageLabel">1 / 1</span>
+                <button id="nextPage">›</button>
+              </div>
+            </div>
+          </section>
+
+          <section class="report-footnote">
+            <p>
+              Some accounts have 0 bandwidth usage due to scrape restrictions. The dataset is sorted by total traffic in descending order.
+            </p>
+            <br />
+            <p>
+              Reads embedded data from <code>data.js</code> and computes everything in-browser. Nothing is transmitted to a server.
+            </p>
+          </section>
+        </div>
+        <hr />
+      </div>
+    </div>
+
+    <div class="back-link">
+      <a href="/index.html" class="back-link-anchor">
+        <span class="back-link-icon"></span>
+        <span class="back-link-text">Back to Main</span>
+      </a>
+    </div>
+
+    <footer class="site-footer">
+      <div class="footer-content">
+        <h1 class="footer-h1">Mahesh Durgam</h1>
+        <p class="footer-p">
+          Made with HTML, CSS and JS, and a lot of frenzy googling. Feel free to
+          check out the source code of this project on my github profile. If you
+          wish to reference or reuse it, I'll be honoured, but please do
+          affiliate me.
+        </p>
+
+        <div class="footer-socials">
+          <a
+            href="https://github.com/maheshdurgam"
+            class="social-link"
+            target="_blank"
+            aria-label="GitHub"
+          >
+            <img
+              src="/assets/icons/socials/github.svg"
+              class="social-icon"
+              alt="GitHub"
+            />
+          </a>
+
+          <a
+            href="https://instagram.com/maheshdurgam"
+            class="social-link"
+            target="_blank"
+            aria-label="Instagram"
+          >
+            <img
+              src="/assets/icons/socials/instagram.svg"
+              class="social-icon"
+              alt="Instagram"
+            />
+          </a>
+
+          <a
+            href="https://linkedin.com/in/mahesh-durgam"
+            class="social-link"
+            target="_blank"
+            aria-label="LinkedIn"
+          >
+            <img
+              src="/assets/icons/socials/linkedin.svg"
+              class="social-icon"
+              alt="LinkedIn"
+            />
+          </a>
+
+          <a
+            href="https://www.youtube.com/@maheshdurgam"
+            class="social-link"
+            target="_blank"
+            aria-label="YouTube"
+          >
+            <img
+              src="/assets/icons/socials/youtube.svg"
+              class="social-icon"
+              alt="YouTube"
+            />
+          </a>
+
+          <a
+            href="https://www.fiverr.com/maheshdurgam"
+            class="social-link"
+            target="_blank"
+            aria-label="Fiverr"
+          >
+            <img
+              src="/assets/icons/socials/fiverr.svg"
+              class="social-icon"
+              alt="Fiverr"
+            />
+          </a>
+
+          <a
+            href="https://www.behance.net/maheshdurgam"
+            class="social-link"
+            target="_blank"
+            aria-label="Behance"
+          >
+            <img
+              src="/assets/icons/socials/behance.svg"
+              class="social-icon"
+              alt="Behance"
+            />
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Site Scripts -->
+    <script src="/js/nav_menu.js"></script>
+    <script src="/js/load_icons.js"></script>
+
+    <!-- Math Rendering -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMath()"></script>
+    
+    <script>
+      function renderMath() {
+        renderMathInElement(document.body, {
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false}
+          ],
+          throwOnError: false
+        });
+      }
+    </script>
+  </body>
+</html>
