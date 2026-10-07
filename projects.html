@@ -1,0 +1,939 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta
+      name="description"
+      content="Selected professional design projects by Mahesh Durgam - graphic design, branding, real estate marketing, digital campaigns and video editing."
+    />
+
+    <title>MD | Projects</title>
+
+    <link rel="preload" href="/assets/logo.svg" as="image" type="image/svg+xml" />
+
+    <link
+      rel="preload"
+      href="/fonts/tanker/Tanker-Regular.woff2"
+      crossorigin="anonymous"
+      as="font"
+      type="font/woff2"
+    />
+
+    <link rel="icon" href="/favicon.png" type="image/png" sizes="33x33" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any" />
+
+    <link
+      rel="stylesheet"
+      href="/css/style.min.css?v=1791012612594"
+      id="main-theme-sheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="/css/animations/loading-animations.css?v=1791012612594"
+    />
+
+    <script src="js/preloader.js" defer></script>
+    <script src="js/nav_menu.js" defer></script>
+    <script src="js/load_icons.js" defer></script>
+
+    <style>
+      .projects-intro {
+        max-width: 850px;
+        margin: 0 auto 55px;
+        padding: 0 24px;
+        text-align: center;
+      }
+
+      .projects-intro p {
+        opacity: 0.7;
+        line-height: 1.75;
+        margin: 0;
+      }
+
+      .project-grid {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      .project-card-link {
+        display: block;
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .project-card {
+        min-height: 270px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .project-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 20px;
+      }
+
+      .project-title {
+        font-size: clamp(1.6rem, 3vw, 2.5rem);
+      }
+
+      .project-year {
+        opacity: 0.45;
+        white-space: nowrap;
+      }
+
+      .project-description {
+        max-width: 780px;
+        line-height: 1.7;
+        opacity: 0.68;
+        margin-top: 20px;
+      }
+
+      .project-role {
+        margin-top: 20px;
+        font-size: 0.85rem;
+        opacity: 0.8;
+      }
+
+      .project-role strong {
+        opacity: 1;
+      }
+
+      .project-tag-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 28px;
+      }
+
+      .project-tag {
+        border: 1px solid currentColor;
+        border-radius: 999px;
+        padding: 5px 11px;
+        font-size: 0.72rem;
+        opacity: 0.7;
+      }
+
+      .project-number {
+        font-family: monospace;
+        opacity: 0.35;
+        font-size: 0.8rem;
+        margin-bottom: 15px;
+      }
+
+      .project-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        margin-top: 30px;
+        font-size: 0.8rem;
+        opacity: 0.55;
+      }
+
+      .project-arrow {
+        font-size: 1.2rem;
+        transition: transform 0.2s ease;
+      }
+
+      .project-card-link:hover .project-arrow {
+        transform: translateX(7px);
+      }
+
+      .experience-note {
+        max-width: 1200px;
+        margin: 0 auto 70px;
+        padding: 0 24px;
+      }
+
+      .experience-note-inner {
+        padding: 25px 0;
+        border-top: 1px solid rgba(128, 128, 128, 0.25);
+        border-bottom: 1px solid rgba(128, 128, 128, 0.25);
+        display: flex;
+        justify-content: space-between;
+        gap: 40px;
+        align-items: center;
+      }
+
+      .experience-note strong {
+        font-size: 1.1rem;
+      }
+
+      .experience-note span {
+        max-width: 600px;
+        opacity: 0.6;
+        line-height: 1.6;
+        text-align: right;
+      }
+
+      @media (max-width: 700px) {
+        .experience-note-inner {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 12px;
+        }
+
+        .experience-note span {
+          text-align: left;
+        }
+
+        .project-header {
+          align-items: flex-start;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <!-- LOADING -->
+
+    <div id="loading-screen">
+      <div class="loader-matrix-container">
+        <div class="matrix-dot"></div>
+        <div class="matrix-dot"></div>
+        <div class="matrix-dot matrix-hero"></div>
+        <div class="matrix-dot"></div>
+      </div>
+    </div>
+
+
+    <!-- NAVIGATION -->
+
+    <nav class="navbar">
+      <div class="nav-container">
+
+        <a
+          href="/index.html"
+          class="logo-link"
+          aria-label="Mahesh Durgam Home"
+        >
+          <div
+            class="logo-item"
+            data-src="/assets/logo.svg"
+          ></div>
+        </a>
+
+        <button
+          class="menu-toggle"
+          id="menu-toggle"
+          aria-label="Toggle navigation"
+        >
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+
+        <ul class="nav-links" id="nav-links">
+
+          <li>
+            <a href="/gallery.html" class="nav-item">
+              Gallery
+            </a>
+          </li>
+
+          <li>
+            <a href="/projects.html" class="nav-item">
+              Projects
+            </a>
+          </li>
+
+          <!--<li>
+            <a href="/blog.html" class="nav-item">
+              Blog
+            </a>
+          </li>-->
+
+          <!--<li>
+            <a
+              href="https://github.com/maheshdurgam"
+              class="nav-item"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Github
+            </a>
+          </li>-->
+
+          <li>
+            <a href="/contact.html" class="nav-item">
+              Contact
+            </a>
+          </li>
+
+        </ul>
+
+      </div>
+    </nav>
+
+
+    <!-- PAGE TITLE -->
+
+    <h1 class="page-heading long-page-heading">
+      PROJECTS
+    </h1>
+
+
+    <!-- INTRO -->
+
+    <div class="projects-intro">
+      <p>
+        Selected professional work across graphic design, branding,
+        real-estate marketing, digital campaigns, print collateral,
+        UI/UX and video editing.
+      </p>
+    </div>
+
+
+    <!-- EXPERIENCE -->
+
+    <div class="experience-note">
+      <div class="experience-note-inner">
+
+        <strong>
+          5+ years of professional design experience
+        </strong>
+
+        <span>
+          Working across corporate technology, real estate,
+          digital marketing and visual communication.
+        </span>
+
+      </div>
+    </div>
+
+
+    <!-- PROJECTS -->
+
+    <div class="project-grid">
+
+
+      <!-- 01 - FAIRMOUNT BUILDERS -->
+
+      <a
+        href="/projects/fairmount-builders.html"
+        class="project-card-link"
+      >
+        <section class="project-card">
+
+          <div>
+
+            <div class="project-number">
+              01 / PROFESSIONAL WORK
+            </div>
+
+            <div class="project-header">
+
+              <span class="project-title">
+                Fairmount Builders
+              </span>
+
+              <span class="project-year">
+                2025 - Present
+              </span>
+
+            </div>
+
+            <p class="project-description">
+              Real-estate marketing and visual communication work
+              created for property campaigns including ARIA, DOWNTOWN,
+              IMPERIA, MIDTOWN, OPUS and PLATINUM.
+              The work spans campaign creatives, standees,
+              social-media graphics and promotional material.
+            </p>
+
+            <p class="project-role">
+              <strong>Role:</strong>
+              Graphic Designer
+            </p>
+
+          </div>
+
+          <div>
+
+            <div class="project-tag-container">
+
+              <span class="project-tag">
+                Real Estate
+              </span>
+
+              <span class="project-tag">
+                Campaign Design
+              </span>
+
+              <span class="project-tag">
+                Social Media
+              </span>
+
+              <span class="project-tag">
+                Print
+              </span>
+
+              <span class="project-tag">
+                Branding
+              </span>
+
+            </div>
+
+            <div class="project-meta">
+              <span>
+                View Project
+              </span>
+
+              <span class="project-arrow">
+                →
+              </span>
+            </div>
+
+          </div>
+
+        </section>
+      </a>
+
+
+      <!-- 02 - PRANEETH GROUP -->
+
+      <a
+        href="/projects/praneeth-group.html"
+        class="project-card-link"
+      >
+        <section class="project-card">
+
+          <div>
+
+            <div class="project-number">
+              02 / PROFESSIONAL WORK
+            </div>
+
+            <div class="project-header">
+
+              <span class="project-title">
+                Praneeth Group
+              </span>
+
+              <span class="project-year">
+                2024 - 2025
+              </span>
+
+            </div>
+
+            <p class="project-description">
+              A broad real-estate marketing portfolio covering
+              social-media campaigns, property banners, brochures,
+              floor plans, leaflets, newsletters, large-format
+              creatives and promotional videos for multiple
+              residential projects.
+            </p>
+
+            <p class="project-role">
+              <strong>Role:</strong>
+              Graphic Designer
+            </p>
+
+          </div>
+
+          <div>
+
+            <div class="project-tag-container">
+
+              <span class="project-tag">
+                Real Estate
+              </span>
+
+              <span class="project-tag">
+                Brochures
+              </span>
+
+              <span class="project-tag">
+                Floor Plans
+              </span>
+
+              <span class="project-tag">
+                Social Media
+              </span>
+
+              <span class="project-tag">
+                Video
+              </span>
+
+              <span class="project-tag">
+                Print
+              </span>
+
+            </div>
+
+            <div class="project-meta">
+              <span>
+                View Project
+              </span>
+
+              <span class="project-arrow">
+                →
+              </span>
+            </div>
+
+          </div>
+
+        </section>
+      </a>
+
+
+      <!-- 03 - AMPLELOGIC -->
+
+      <a
+        href="/projects/amplelogic.html"
+        class="project-card-link"
+      >
+        <section class="project-card">
+
+          <div>
+
+            <div class="project-number">
+              03 / PROFESSIONAL WORK
+            </div>
+
+            <div class="project-header">
+
+              <span class="project-title">
+                AmpleLogic
+              </span>
+
+              <span class="project-year">
+                2021 - 2023
+              </span>
+
+            </div>
+
+            <p class="project-description">
+              Corporate and technology-focused design work created
+              across brochures, banners, social-media graphics,
+              animated content and email templates. The role also
+              involved working closely with developers and marketing
+              teams to maintain brand consistency and visual quality.
+            </p>
+
+            <p class="project-role">
+              <strong>Role:</strong>
+              Graphic Designer
+            </p>
+
+          </div>
+
+          <div>
+
+            <div class="project-tag-container">
+
+              <span class="project-tag">
+                Corporate
+              </span>
+
+              <span class="project-tag">
+                Technology
+              </span>
+
+              <span class="project-tag">
+                Branding
+              </span>
+
+              <span class="project-tag">
+                Marketing
+              </span>
+
+              <span class="project-tag">
+                Motion Graphics
+              </span>
+
+              <span class="project-tag">
+                Digital
+              </span>
+
+            </div>
+
+            <div class="project-meta">
+              <span>
+                View Project
+              </span>
+
+              <span class="project-arrow">
+                →
+              </span>
+            </div>
+
+          </div>
+
+        </section>
+      </a>
+
+
+      <!-- 04 - REAL ESTATE CAMPAIGNS -->
+
+      <a
+        href="/projects/real-estate-campaigns.html"
+        class="project-card-link"
+      >
+        <section class="project-card">
+
+          <div>
+
+            <div class="project-number">
+              04 / SPECIALIZATION
+            </div>
+
+            <div class="project-header">
+
+              <span class="project-title">
+                Real Estate Campaigns
+              </span>
+
+              <span class="project-year">
+                2024 - Present
+              </span>
+
+            </div>
+
+            <p class="project-description">
+              End-to-end visual communication for property marketing:
+              campaign concepts, social creatives, property banners,
+              standees, brochures, floor plans, promotional material
+              and short-form video content.
+            </p>
+
+            <p class="project-role">
+              <strong>Focus:</strong>
+              Property marketing &amp; visual communication
+            </p>
+
+          </div>
+
+          <div>
+
+            <div class="project-tag-container">
+
+              <span class="project-tag">
+                Property Marketing
+              </span>
+
+              <span class="project-tag">
+                Campaigns
+              </span>
+
+              <span class="project-tag">
+                Brochures
+              </span>
+
+              <span class="project-tag">
+                Hoardings
+              </span>
+
+              <span class="project-tag">
+                Social Media
+              </span>
+
+            </div>
+
+            <div class="project-meta">
+              <span>
+                View Project
+              </span>
+
+              <span class="project-arrow">
+                →
+              </span>
+            </div>
+
+          </div>
+
+        </section>
+      </a>
+
+
+      <!-- 05 - BRANDING -->
+
+      <a
+        href="/projects/branding.html"
+        class="project-card-link"
+      >
+        <section class="project-card">
+
+          <div>
+
+            <div class="project-number">
+              05 / SPECIALIZATION
+            </div>
+
+            <div class="project-header">
+
+              <span class="project-title">
+                Branding &amp; Marketing Collateral
+              </span>
+
+              <span class="project-year">
+                2021 - Present
+              </span>
+
+            </div>
+
+            <p class="project-description">
+              Marketing material designed for both digital and
+              physical environments, including brochures, flyers,
+              newsletters, presentations, banners, event creatives,
+              advertisements and other branded communication.
+            </p>
+
+            <p class="project-role">
+              <strong>Focus:</strong>
+              Brand consistency &amp; communication
+            </p>
+
+          </div>
+
+          <div>
+
+            <div class="project-tag-container">
+
+              <span class="project-tag">
+                Branding
+              </span>
+
+              <span class="project-tag">
+                Brochures
+              </span>
+
+              <span class="project-tag">
+                Flyers
+              </span>
+
+              <span class="project-tag">
+                Presentations
+              </span>
+
+              <span class="project-tag">
+                Advertising
+              </span>
+
+              <span class="project-tag">
+                Print
+              </span>
+
+            </div>
+
+            <div class="project-meta">
+              <span>
+                View Project
+              </span>
+
+              <span class="project-arrow">
+                →
+              </span>
+            </div>
+
+          </div>
+
+        </section>
+      </a>
+
+
+      <!-- 06 - VIDEO & MOTION -->
+
+      <a
+        href="/projects/video-motion.html"
+        class="project-card-link"
+      >
+        <section class="project-card">
+
+          <div>
+
+            <div class="project-number">
+              06 / SPECIALIZATION
+            </div>
+
+            <div class="project-header">
+
+              <span class="project-title">
+                Video &amp; Motion Design
+              </span>
+
+              <span class="project-year">
+                2021 - Present
+              </span>
+
+            </div>
+
+            <p class="project-description">
+              Promotional videos, reels, animated content and
+              motion-led marketing creatives developed alongside
+              graphic design work for corporate and real-estate
+              campaigns.
+            </p>
+
+            <p class="project-role">
+              <strong>Focus:</strong>
+              Video editing &amp; motion graphics
+            </p>
+
+          </div>
+
+          <div>
+
+            <div class="project-tag-container">
+
+              <span class="project-tag">
+                Video Editing
+              </span>
+
+              <span class="project-tag">
+                Reels
+              </span>
+
+              <span class="project-tag">
+                Motion Graphics
+              </span>
+
+              <span class="project-tag">
+                After Effects
+              </span>
+
+              <span class="project-tag">
+                Premiere Pro
+              </span>
+
+            </div>
+
+            <div class="project-meta">
+              <span>
+                View Project
+              </span>
+
+              <span class="project-arrow">
+                →
+              </span>
+            </div>
+
+          </div>
+
+        </section>
+      </a>
+
+
+    </div>
+
+
+    <!-- BACK -->
+
+    <div class="back-link">
+      <a
+        href="/index.html"
+        class="back-link-anchor"
+      >
+        <span class="back-link-icon"></span>
+
+        <span class="back-link-text">
+          Back to Main
+        </span>
+      </a>
+    </div>
+
+
+    <!-- FOOTER -->
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <h1 class="footer-h1">Mahesh Durgam</h1>
+            <!--<p class="footer-p">
+                Made with HTML, CSS and JS, and a lot of frenzy googling.
+                Feel free to check out the source code of this project on my
+                github profile. If you wish to reference or reuse it, I'll
+                be honoured, but please do affiliate me.
+            </p>-->
+
+            <div class="footer-socials">
+                <!--<a
+                    href="https://github.com/maheshdurgam"
+                    class="social-link"
+                    target="_blank"
+                    aria-label="GitHub"
+                >
+                    <img
+                        src="assets/icons/socials/github.svg"
+                        class="social-icon"
+                        alt="GitHub"
+                    />
+                </a>-->
+
+                <a
+                    href="https://instagram.com/mahesh.durgam"
+                    class="social-link"
+                    target="_blank"
+                    aria-label="Instagram"
+                >
+                    <img
+                        src="assets/icons/socials/instagram.svg"
+                        class="social-icon"
+                        alt="Instagram"
+                    />
+                </a>
+
+                <a
+                    href="https://www.linkedin.com/in/mahesh-durgam-1156b915b"
+                    class="social-link"
+                    target="_blank"
+                    aria-label="LinkedIn"
+                >
+                    <img
+                        src="assets/icons/socials/linkedin.svg"
+                        class="social-icon"
+                        alt="LinkedIn"
+                    />
+                </a>
+
+                <!--<a
+                    href="https://www.youtube.com/@maheshdurgam"
+                    class="social-link"
+                    target="_blank"
+                    aria-label="YouTube"
+                >
+                    <img
+                        src="assets/icons/socials/youtube.svg"
+                        class="social-icon"
+                        alt="YouTube"
+                    />
+                </a>-->
+
+                <!--<a
+                    href="https://www.fiverr.com/maheshdurgam"
+                    class="social-link"
+                    target="_blank"
+                    aria-label="Fiverr"
+                >
+                    <img
+                        src="assets/icons/socials/fiverr.svg"
+                        class="social-icon"
+                        alt="Fiverr"
+                    />
+                </a>-->
+
+                <a
+                    href="https://www.behance.net/maheshdurgam"
+                    class="social-link"
+                    target="_blank"
+                    aria-label="Behance"
+                >
+                    <img
+                        src="assets/icons/socials/behance.svg"
+                        class="social-icon"
+                        alt="Behance"
+                    />
+                </a>
+            </div>
+        </div>
+    </footer>
+
+  </body>
+</html>

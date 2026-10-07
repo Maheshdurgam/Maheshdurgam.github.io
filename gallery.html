@@ -1,0 +1,866 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta
+      name="description"
+      content="Selected work by Mahesh Durgam - graphic design, branding, real-estate creatives, digital campaigns and video editing."
+    />
+
+    <title>MD | Gallery</title>
+
+    <link
+      rel="preload"
+      href="/assets/logo.svg"
+      as="image"
+      type="image/svg+xml"
+    />
+
+    <link
+      rel="preload"
+      href="/fonts/tanker/Tanker-Regular.woff2"
+      crossorigin="anonymous"
+      as="font"
+      type="font/woff2"
+    />
+
+    <link rel="icon" href="/favicon.png" type="image/png" sizes="33x33" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any" />
+
+    <link
+      rel="stylesheet"
+      href="/css/style.min.css?v=1791012612594"
+      id="main-theme-sheet"
+    />
+
+    <script src="js/preloader.js" defer></script>
+    <script src="js/nav_menu.js" defer></script>
+    <script src="js/load_icons.js" defer></script>
+
+    <link
+      rel="stylesheet"
+      href="/css/animations/loading-animations.css?v=1791012612594"
+    />
+
+    <style>
+      .gallery-intro {
+        max-width: 900px;
+        margin: 0 auto 50px;
+        padding: 0 24px;
+        text-align: center;
+      }
+
+      .gallery-intro p {
+        opacity: 0.72;
+        line-height: 1.7;
+        margin: 0;
+      }
+
+      .gallery-section {
+        margin-bottom: 70px;
+      }
+
+      .gallery-section-title {
+        max-width: 1200px;
+        margin: 0 auto 22px;
+        padding: 0 24px;
+        font-size: 1.4rem;
+      }
+
+      .gallery-section-title span {
+        opacity: 0.5;
+        font-size: 0.85rem;
+        margin-left: 10px;
+      }
+
+      .masonry-grid {
+        margin-bottom: 40px;
+      }
+
+      .masonry-item {
+        position: relative;
+        overflow: hidden;
+        border-radius: 8px;
+      }
+
+      .masonry-item img,
+      .masonry-item video {
+        display: block;
+        width: 100%;
+        height: auto;
+        background: #111;
+      }
+
+      .masonry-item video {
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+      }
+
+      .gallery-caption {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 38px 16px 14px;
+        color: white;
+        background: linear-gradient(
+          transparent,
+          rgba(0, 0, 0, 0.82)
+        );
+        opacity: 0;
+        transition: opacity 0.25s ease;
+        pointer-events: none;
+      }
+
+      .masonry-item:hover .gallery-caption,
+      .masonry-item:focus-within .gallery-caption {
+        opacity: 1;
+      }
+
+      .gallery-caption strong {
+        display: block;
+        font-size: 0.95rem;
+        margin-bottom: 3px;
+      }
+
+      .gallery-caption small {
+        opacity: 0.72;
+        font-size: 0.78rem;
+      }
+
+      .experience-strip {
+        max-width: 1100px;
+        margin: 0 auto 70px;
+        padding: 0 24px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1px;
+        background: rgba(128, 128, 128, 0.2);
+      }
+
+      .experience-item {
+        padding: 24px;
+        background: var(--background, #fff);
+      }
+
+      .experience-item strong {
+        display: block;
+        font-size: 1.5rem;
+        margin-bottom: 5px;
+      }
+
+      .experience-item span {
+        opacity: 0.65;
+        font-size: 0.85rem;
+      }
+
+      @media (max-width: 700px) {
+        .experience-strip {
+          grid-template-columns: 1fr;
+        }
+
+        .gallery-caption {
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="loading-screen">
+      <div class="loader-matrix-container">
+        <div class="matrix-dot"></div>
+        <div class="matrix-dot"></div>
+        <div class="matrix-dot matrix-hero"></div>
+        <div class="matrix-dot"></div>
+      </div>
+    </div>
+
+    <nav class="navbar">
+      <div class="nav-container">
+        <a
+          href="/index.html"
+          class="logo-link"
+          aria-label="Mahesh Durgam Home"
+        >
+          <div class="logo-item" data-src="assets/logo.svg"></div>
+        </a>
+
+        <button
+          class="menu-toggle"
+          id="menu-toggle"
+          aria-label="Toggle navigation"
+        >
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+
+        <ul class="nav-links" id="nav-links">
+          <li>
+            <a href="gallery.html" class="nav-item">Gallery</a>
+          </li>
+          <li>
+            <a href="projects.html" class="nav-item">Projects</a>
+          </li>
+          <!--<li>
+            <a href="blog.html" class="nav-item">Blog</a>
+          </li>-->
+          <!--<li>
+            <a
+              href="https://github.com/maheshdurgam"
+              class="nav-item"
+              target="_blank"
+              rel="noopener"
+            >
+              Github
+            </a>
+          </li>-->
+          <li>
+            <a href="contact.html" class="nav-item">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <h1 class="page-heading long-page-heading">gallery</h1>
+
+    <div class="gallery-intro">
+      <p>
+        A selected collection of graphic design, branding, digital marketing,
+        real-estate creatives and video work created across 5+ years of
+        professional experience.
+      </p>
+    </div>
+
+    <div class="experience-strip">
+      <div class="experience-item">
+        <strong>5+</strong>
+        <span>Years of professional design experience</span>
+      </div>
+
+      <div class="experience-item">
+        <strong>3</strong>
+        <span>Professional environments</span>
+      </div>
+
+      <div class="experience-item">
+        <strong>Design + Motion</strong>
+        <span>Graphic design, branding and video editing</span>
+      </div>
+    </div>
+
+    <!-- =========================================================
+         AMPLELOGIC
+         ========================================================= -->
+
+    <section class="gallery-section">
+      <h2 class="gallery-section-title">
+        AmpleLogic
+        <span>Corporate · Technology · Digital</span>
+      </h2>
+
+      <div class="masonry-grid">
+
+        <div class="masonry-item skeleton">
+          <img
+            src="assets/gallery/amplelogic-main-banner.jpg"
+            alt="AmpleLogic corporate main banner design"
+            loading="lazy"
+          />
+          <div class="gallery-caption">
+            <strong>Corporate Campaign Design</strong>
+            <small>AmpleLogic · Digital marketing</small>
+          </div>
+        </div>
+
+        <div class="masonry-item skeleton">
+          <img
+            src="assets/gallery/amplelogic-brochure-1.png"
+            alt="AmpleLogic brochure design"
+            loading="lazy"
+          />
+          <div class="gallery-caption">
+            <strong>Brochure Design</strong>
+            <small>AmpleLogic · Corporate communication</small>
+          </div>
+        </div>
+
+        <div class="masonry-item skeleton">
+          <img
+            src="assets/gallery/amplelogic-brochure-2.png"
+            alt="AmpleLogic brochure design"
+            loading="lazy"
+          />
+          <div class="gallery-caption">
+            <strong>Marketing Collateral</strong>
+            <small>AmpleLogic · Print & digital</small>
+          </div>
+        </div>
+
+        <div class="masonry-item skeleton">
+          <img
+            src="assets/gallery/amplelogic-dms.png"
+            alt="AmpleLogic DMS creative"
+            loading="lazy"
+          />
+          <div class="gallery-caption">
+            <strong>Product Communication</strong>
+            <small>AmpleLogic · DMS</small>
+          </div>
+        </div>
+
+        <div class="masonry-item skeleton">
+          <img
+            src="assets/gallery/amplelogic-ebmr.png"
+            alt="AmpleLogic electronic batch records creative"
+            loading="lazy"
+          />
+          <div class="gallery-caption">
+            <strong>Product Campaign</strong>
+            <small>AmpleLogic · eBMR</small>
+          </div>
+        </div>
+
+        <div class="masonry-item skeleton">
+          <img
+            src="assets/gallery/amplelogic-qms.png"
+            alt="AmpleLogic QMS design"
+            loading="lazy"
+          />
+          <div class="gallery-caption">
+            <strong>Product Design</strong>
+            <small>AmpleLogic · Quality management</small>
+          </div>
+        </div>
+
+        <div class="masonry-item skeleton">
+          <img
+            src="assets/gallery/amplelogic-low-code.jpg"
+            alt="AmpleLogic low-code platform design"
+            loading="lazy"
+          />
+          <div class="gallery-caption">
+            <strong>Technology Marketing</strong>
+            <small>AmpleLogic · Low-code platform</small>
+          </div>
+        </div>
+
+        <div class="masonry-item skeleton">
+          <img
+            src="assets/gallery/amplelogic-podium.jpg"
+            alt="AmpleLogic event podium booth design"
+            loading="lazy"
+          />
+          <div class="gallery-caption">
+            <strong>Event Branding</strong>
+            <small>AmpleLogic · Event creative</small>
+          </div>
+        </div>
+
+        <div class="masonry-item skeleton">
+          <video
+            controls
+            muted
+            loop
+            playsinline
+            preload="metadata"
+          >
+            <source
+              src="assets/gallery/amplelogic-dms.mp4"
+              type="video/mp4"
+            />
+          </video>
+          <div class="gallery-caption">
+            <strong>Product Video</strong>
+            <small>AmpleLogic · Motion / video editing</small>
+          </div>
+        </div>
+
+        <div class="masonry-item skeleton">
+          <video
+            controls
+            muted
+            loop
+            playsinline
+            preload="metadata"
+          >
+            <source
+              src="assets/gallery/amplelogic-ebmr.mp4"
+              type="video/mp4"
+            />
+          </video>
+          <div class="gallery-caption">
+            <strong>Explainer Video</strong>
+            <small>AmpleLogic · eBMR</small>
+          </div>
+        </div>
+
+        <div class="masonry-item skeleton">
+          <video
+            controls
+            muted
+            loop
+            playsinline
+            preload="metadata"
+          >
+            <source
+              src="assets/gallery/amplelogic-promo.mp4"
+              type="video/mp4"
+            />
+          </video>
+          <div class="gallery-caption">
+            <strong>Promotional Video</strong>
+            <small>AmpleLogic · Video editing</small>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================
+         PRANEETH GROUP
+         ========================================================= -->
+
+    <section class="gallery-section">
+      <h2 class="gallery-section-title">
+        Praneeth Group
+        <span>Real Estate · Marketing · Motion</span>
+      </h2>
+
+      <div class="masonry-grid">
+
+        <div class="masonry-item skeleton">
+          <img
+            src="assets/gallery/praneeth-grove-park.jpg"
+            alt="Grove Park real estate creative"
+            loading="lazy"
+          />
+          <div class="gallery-caption">
+            <strong>Grove Park Campaign</strong>
+            <small>Praneeth Group · Real-estate marketing</small>
+          </div>
+        </div>
+
+        <div class="masonry-item skeleton">
+          <img
+            src="assets/gallery/praneeth-ixora.jpg"
+            alt="Ixora real estate creative"
+            loading="lazy"
+          />
+          <div class="gallery-caption">
+            <strong>Ixora Campaign</strong>
+            <small>Praneeth Group · Real-estate creative</small>
+          </div>
+        </div>
+
+        <div class="masonry-item skeleton">
+          <img
+            src="assets/gallery/praneeth-solitaire.jpg"
+            alt="Solitaire real estate creative"
+            loading="lazy"
+          />
+          <div class="gallery-caption">
+            <strong>Solitaire Campaign</strong>
+            <small>Praneeth Group · Marketing design</small>
+          </div>
+        </div>
+
+        <div class="masonry-item skeleton">
+          <img
+            src="assets/gallery/praneeth-ppgp.jpg"
+            alt="Praneeth Group property campaign"
+            loading="lazy"
+          />
+          <div class="gallery-caption">
+            <strong>Property Campaign</strong>
+            <small>Praneeth Group · Digital advertising</small>
+          </div>
+        </div>
+
+        <div class="masonry-item skeleton">
+          <img
+            src="assets/gallery/praneeth-ppj-standee.jpg"
+            alt="Praneeth Group standee design"
+            loading="lazy"
+          />
+          <div class="gallery-caption">
+            <strong>Large-format Standee</strong>
+            <small>Praneeth Group · Print design</small>
+          </div>
+        </div>
+
+        <div class="masonry-item skeleton">
+          <img
+            src="assets/gallery/praneeth-pps-standee.jpg"
+            alt="Praneeth Group property standee"
+            loading="lazy"
+          />
+          <div class="gallery-caption">
+            <strong>Property Standee</strong>
+            <small>Praneeth Group · Real-estate branding</small>
+          </div>
+        </div>
+
+        <div class="masonry-item skeleton">
+          <video
+            controls
+            muted
+            loop
+            playsinline
+            preload="metadata"
+          >
+            <source
+              src="assets/gallery/praneeth-grove-park.mp4"
+              type="video/mp4"
+            />
+          </video>
+          <div class="gallery-caption">
+            <strong>Grove Park Reel</strong>
+            <small>Praneeth Group · Video editing</small>
+          </div>
+        </div>
+
+        <div class="masonry-item skeleton">
+          <video
+            controls
+            muted
+            loop
+            playsinline
+            preload="metadata"
+          >
+            <source
+              src="assets/gallery/praneeth-ixora.mp4"
+              type="video/mp4"
+            />
+          </video>
+          <div class="gallery-caption">
+            <strong>Ixora Reel</strong>
+            <small>Praneeth Group · Motion / video</small>
+          </div>
+        </div>
+
+        <div class="masonry-item skeleton">
+          <video
+            controls
+            muted
+            loop
+            playsinline
+            preload="metadata"
+          >
+            <source
+              src="assets/gallery/praneeth-jaitra.mp4"
+              type="video/mp4"
+            />
+          </video>
+          <div class="gallery-caption">
+            <strong>Jaitra Reel</strong>
+            <small>Praneeth Group · Video editing</small>
+          </div>
+        </div>
+
+        <div class="masonry-item skeleton">
+          <video
+            controls
+            muted
+            loop
+            playsinline
+            preload="metadata"
+          >
+            <source
+              src="assets/gallery/praneeth-solitaire.mp4"
+              type="video/mp4"
+            />
+          </video>
+          <div class="gallery-caption">
+            <strong>Solitaire Reel</strong>
+            <small>Praneeth Group · Promotional video</small>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================================================
+         FAIRMOUNT BUILDERS
+         ========================================================= -->
+
+    <section class="gallery-section">
+      <h2 class="gallery-section-title">
+        Fairmount Builders
+        <span>Real Estate · Branding · Current Work</span>
+      </h2>
+
+      <div class="masonry-grid">
+
+        <div class="masonry-item skeleton">
+          <img
+            src="assets/gallery/fairmount-aria.png"
+            alt="Fairmount Builders ARIA creative"
+            loading="lazy"
+          />
+          <div class="gallery-caption">
+            <strong>ARIA</strong>
+            <small>Fairmount Builders · Real-estate creative</small>
+          </div>
+        </div>
+
+        <div class="masonry-item skeleton">
+          <img
+            src="assets/gallery/fairmount-downtown.png"
+            alt="Fairmount Builders Downtown creative"
+            loading="lazy"
+          />
+          <div class="gallery-caption">
+            <strong>DOWNTOWN</strong>
+            <small>Fairmount Builders · Campaign design</small>
+          </div>
+        </div>
+
+        <div class="masonry-item skeleton">
+          <img
+            src="assets/gallery/fairmount-imperia.png"
+            alt="Fairmount Builders Imperia creative"
+            loading="lazy"
+          />
+          <div class="gallery-caption">
+            <strong>IMPERIA</strong>
+            <small>Fairmount Builders · Property marketing</small>
+          </div>
+        </div>
+
+        <div class="masonry-item skeleton">
+          <img
+            src="assets/gallery/fairmount-midtown.png"
+            alt="Fairmount Builders Midtown creative"
+            loading="lazy"
+          />
+          <div class="gallery-caption">
+            <strong>MIDTOWN</strong>
+            <small>Fairmount Builders · Campaign design</small>
+          </div>
+        </div>
+
+        <div class="masonry-item skeleton">
+          <img
+            src="assets/gallery/fairmount-opus.png"
+            alt="Fairmount Builders OPUS creative"
+            loading="lazy"
+          />
+          <div class="gallery-caption">
+            <strong>OPUS</strong>
+            <small>Fairmount Builders · Property marketing</small>
+          </div>
+        </div>
+
+        <div class="masonry-item skeleton">
+          <img
+            src="assets/gallery/fairmount-platinum.png"
+            alt="Fairmount Builders Platinum creative"
+            loading="lazy"
+          />
+          <div class="gallery-caption">
+            <strong>PLATINUM</strong>
+            <small>Fairmount Builders · Real-estate branding</small>
+          </div>
+        </div>
+
+        <div class="masonry-item skeleton">
+          <img
+            src="assets/gallery/fairmount-aria-carousel.png"
+            alt="Fairmount Builders ARIA carousel design"
+            loading="lazy"
+          />
+          <div class="gallery-caption">
+            <strong>ARIA Carousel</strong>
+            <small>Fairmount Builders · Social campaign</small>
+          </div>
+        </div>
+
+        <div class="masonry-item skeleton">
+          <img
+            src="assets/gallery/fairmount-downtown-carousel.png"
+            alt="Fairmount Builders Downtown carousel design"
+            loading="lazy"
+          />
+          <div class="gallery-caption">
+            <strong>DOWNTOWN Carousel</strong>
+            <small>Fairmount Builders · Social campaign</small>
+          </div>
+        </div>
+
+        <div class="masonry-item skeleton">
+          <img
+            src="assets/gallery/fairmount-midtown-carousel.png"
+            alt="Fairmount Builders Midtown carousel design"
+            loading="lazy"
+          />
+          <div class="gallery-caption">
+            <strong>MIDTOWN Carousel</strong>
+            <small>Fairmount Builders · Social campaign</small>
+          </div>
+        </div>
+
+        <div class="masonry-item skeleton">
+          <img
+            src="assets/gallery/fairmount-opus-carousel.png"
+            alt="Fairmount Builders OPUS carousel design"
+            loading="lazy"
+          />
+          <div class="gallery-caption">
+            <strong>OPUS Carousel</strong>
+            <small>Fairmount Builders · Social campaign</small>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <h1 class="footer-h1">Mahesh Durgam</h1>
+            <!--<p class="footer-p">
+                Made with HTML, CSS and JS, and a lot of frenzy googling.
+                Feel free to check out the source code of this project on my
+                github profile. If you wish to reference or reuse it, I'll
+                be honoured, but please do affiliate me.
+            </p>-->
+
+            <div class="footer-socials">
+                <!--<a
+                    href="https://github.com/maheshdurgam"
+                    class="social-link"
+                    target="_blank"
+                    aria-label="GitHub"
+                >
+                    <img
+                        src="assets/icons/socials/github.svg"
+                        class="social-icon"
+                        alt="GitHub"
+                    />
+                </a>-->
+
+                <a
+                    href="https://instagram.com/mahesh.durgam"
+                    class="social-link"
+                    target="_blank"
+                    aria-label="Instagram"
+                >
+                    <img
+                        src="assets/icons/socials/instagram.svg"
+                        class="social-icon"
+                        alt="Instagram"
+                    />
+                </a>
+
+                <a
+                    href="https://www.linkedin.com/in/mahesh-durgam-1156b915b"
+                    class="social-link"
+                    target="_blank"
+                    aria-label="LinkedIn"
+                >
+                    <img
+                        src="assets/icons/socials/linkedin.svg"
+                        class="social-icon"
+                        alt="LinkedIn"
+                    />
+                </a>
+
+                <!--<a
+                    href="https://www.youtube.com/@maheshdurgam"
+                    class="social-link"
+                    target="_blank"
+                    aria-label="YouTube"
+                >
+                    <img
+                        src="assets/icons/socials/youtube.svg"
+                        class="social-icon"
+                        alt="YouTube"
+                    />
+                </a>-->
+
+                <!--<a
+                    href="https://www.fiverr.com/maheshdurgam"
+                    class="social-link"
+                    target="_blank"
+                    aria-label="Fiverr"
+                >
+                    <img
+                        src="assets/icons/socials/fiverr.svg"
+                        class="social-icon"
+                        alt="Fiverr"
+                    />
+                </a>-->
+
+                <a
+                    href="https://www.behance.net/maheshdurgam"
+                    class="social-link"
+                    target="_blank"
+                    aria-label="Behance"
+                >
+                    <img
+                        src="assets/icons/socials/behance.svg"
+                        class="social-icon"
+                        alt="Behance"
+                    />
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const startTime = performance.now();
+        const MIN_DELAY = 700;
+
+        const items = document.querySelectorAll(".masonry-item");
+
+        items.forEach((item) => {
+          const media = item.querySelector("img, video");
+
+          if (!media) {
+            item.classList.remove("skeleton");
+            return;
+          }
+
+          const reveal = () => {
+            const elapsed = performance.now() - startTime;
+            const remaining = Math.max(0, MIN_DELAY - elapsed);
+
+            setTimeout(() => {
+              item.classList.remove("skeleton");
+            }, remaining);
+          };
+
+          if (media.tagName === "VIDEO") {
+            if (media.readyState >= 1) {
+              reveal();
+            } else {
+              media.addEventListener("loadedmetadata", reveal, {
+                once: true
+              });
+
+              media.addEventListener("error", reveal, {
+                once: true
+              });
+            }
+          } else {
+            if (media.complete) {
+              reveal();
+            } else {
+              media.addEventListener("load", reveal, {
+                once: true
+              });
+
+              media.addEventListener("error", reveal, {
+                once: true
+              });
+            }
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

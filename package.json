@@ -1,0 +1,30 @@
+{
+  "dependencies": {
+    "clean-css": "^5.3.3",
+    "gray-matter": "^2.0.1",
+    "image-size": "^2.0.2",
+    "marked": "^18.0.5",
+    "marked-katex-extension": "^5.1.10"
+  },
+  "name": "elysium",
+  "version": "1.0.0",
+  "description": "> \"41. Trying to be someone else, is a waste of the person you are.\" > > *-an acquaintance*",
+  "main": "index.js",
+  "scripts": {
+    "build": "node js/blog_engine.js && node js/build_gallery.js && node js/project_engine.js && node js/compile_index.js && node js/minify.js && node js/sitemap_engine.js && node --env-file-if-exists=.env js/sandbox_engine.js",
+    "git-build": "node js/blog_engine.js && node js/build_gallery.js && node js/project_engine.js && node js/compile_index.js && node --env-file-if-exists=.env js/sandbox_engine.js",
+    "stamp": "node js/stamp_css.js && node js/minify.js && node js/sitemap_engine.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maheshdurgam/maheshdurgam.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/maheshdurgam/maheshdurgam.github.io/issues"
+  },
+  "homepage": "https://github.com/maheshdurgam/maheshdurgam.github.io/#readme"
+}
